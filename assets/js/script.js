@@ -1,4 +1,6 @@
 const game = document.getElementById("word-container");
+const screen = document.getElementById("keyboard-container");
+const title = document.getElementById("tema");
 
 const wordlist = {
     fruits: {
@@ -127,6 +129,7 @@ function addLetterBox(){
 function randomFruit(){
     const keyList = Object.keys(wordlist);
     const randomKey = keyList[Math.floor(Math.random() * keyList.length)];
+    title.innerHTML = wordlist[randomKey].type
     
     const itemIndex = Math.floor(Math.random() * wordlist[randomKey].list.length);
     console.log(itemIndex)
@@ -179,3 +182,12 @@ function closeDialog() {
     dialog.close();
     location.reload() // Fechar o diálogo
 }
+
+function shakeScreen() {
+    screen.classList.add('shake');
+  
+    // Remover a classe shake após a animação terminar
+    setTimeout(() => {
+      screen.classList.remove('shake');
+    }, 500);
+  }
