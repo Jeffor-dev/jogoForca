@@ -1,18 +1,70 @@
 const game = document.getElementById("word-container");
 
-const fruits = [
-    "Acerola",
-    "Banana",
-    "Laranja",
-    "Morango",
-    "Uva",
-    "Abacaxi",
-    "Melancia",
-    "Abacate",
-    "Caju",
-    "Kiwi",
-    "Pera"
-];
+const wordlist = {
+    fruits: {
+        type: "Fruta",
+        list: [
+            "Acerola",
+            "Banana",
+            "Laranja",
+            "Morango",
+            "Uva",
+            "Abacaxi",
+            "Melancia",
+            "Abacate",
+            "Caju",
+            "Kiwi",
+            "Pera"
+        ]
+    },
+    profissions: {
+        type: "Profissão",
+        list: [
+            "Advogado",
+            "Cabeleleiro",
+            "Recepcionista",
+            "Professor",
+            "Policial",
+            "Enfermeiro",
+            "Atendente",
+            "Programador",
+            "Medico",
+            "Dentista",
+            "Engenheiro",
+            "Agronomo",
+        ]
+    },
+    animals: {
+        type: "Animal",
+        list: [
+            "Cachorro",
+            "Gato",
+            "Cavalo",
+            "Hipopotamo",
+            "Peixe",
+            "Elefante",
+            "Girafa",
+            "Cabra",
+            "Zebra",
+            "Gaivota"
+        ]
+    },
+    colors: {
+        type: "Cor",
+        list: [
+            "Vermelho",
+            "Verde",
+            "Azul",
+            "Amarelo",
+            "Roxo",
+            "Cinza",
+            "Preto",
+            "Branco",
+            "Rosa",
+            "Marrom"
+        ]
+    },
+}
 
 
 const usedLetters = []
@@ -22,8 +74,8 @@ const player = {
 }
 
 
-const fruit = randomFruit().toUpperCase()
-wordTemplateGenerate(fruit);
+const word = randomFruit().toUpperCase()
+wordTemplateGenerate(word);
 
 function addLetter(letter){
     if ( usedLetters.includes(letter)){
@@ -31,9 +83,9 @@ function addLetter(letter){
         return
     }
 
-    if ( fruit.includes(letter)) {
+    if ( word.includes(letter)) {
         usedLetters.push(letter)
-        fruit.split('').forEach( (letterFruit, index) => {
+        word.split('').forEach( (letterFruit, index) => {
             if (letterFruit === letter) {
                 let newLetter = document.createElement("div");
                 let keyboardLetter = document.getElementById(letter)
@@ -44,7 +96,7 @@ function addLetter(letter){
                 console.log(game.children[index])
                 game.children[index+1].innerHTML = letter
                 player.points++
-                if (player.points === fruit.length) {
+                if (player.points === word.length) {
                     gameOver("win")
                 }
             }
@@ -73,8 +125,13 @@ function addLetterBox(){
 
 //Escolher uma fruta aleatória
 function randomFruit(){
-    const fruitIndex = Math.floor(Math.random() * fruits.length);
-    return fruits[fruitIndex];
+    const keyList = Object.keys(wordlist);
+    const randomKey = keyList[Math.floor(Math.random() * keyList.length)];
+    
+    const itemIndex = Math.floor(Math.random() * wordlist[randomKey].list.length);
+    console.log(itemIndex)
+    console.log(wordlist[randomKey].list[itemIndex])
+    return wordlist[randomKey].list[itemIndex];
 }
 
 //Gerar o template da palavra
@@ -110,7 +167,7 @@ function openDialog(result) {
         dialog.children[1].innerHTML = `Você venceu!`;
     }
     else {
-        dialog.children[1].innerHTML = `Você perdeu! A palavra era ${fruit}`;
+        dialog.children[1].innerHTML = `Você perdeu! A palavra era ${word}`;
     }
     dialog.showModal(); // Abrir o diálogo
 }
