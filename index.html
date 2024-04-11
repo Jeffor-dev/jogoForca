@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <header>
+        <span id="tema">Fruta</span>
+        <div id="heart-container">
+            <i class="bi bi-heart-fill text-negative" style="font-size: 3rem;"></i>
+            <i class="bi bi-heart-fill text-negative" style="font-size: 3rem;"></i>
+            <i class="bi bi-heart-fill text-negative" style="font-size: 3rem;"></i>
+            <i class="bi bi-heart-fill text-negative" style="font-size: 3rem;"></i>
+            <i class="bi bi-heart-fill text-negative" style="font-size: 3rem;"></i>
+        </div>
+        
+    </header>
+    
+    <!-- container do jogo -->
+    <section id="game-container">
+        <div id="word-container">
+            <dialog id="myDialog">
+                <h2>Fim de jogo</h2>
+                <p>Você perdeu!!</p>
+                <button class="button" onclick="closeDialog()">Recomeçar</button>
+            </dialog>
+        </div>
+    </section>
+
+    <!-- container do teclado -->
+    <section id="keyboard-container">
+        <div id="line-container">
+            <div class="line">
+                <button id="Q" class="key" onclick="addLetter('Q')">Q</button>
+                <button id="W" class="key" onclick="addLetter('W')">W</button>
+                <button id="E" class="key" onclick="addLetter('E')">E</button>
+                <button id="R" class="key" onclick="addLetter('R')">R</button>
+                <button id="T" class="key" onclick="addLetter('T')">T</button>
+                <button id="Y" class="key" onclick="addLetter('Y')">Y</button>
+                <button id="U" class="key" onclick="addLetter('U')">U</button>
+                <button id="I" class="key" onclick="addLetter('I')">I</button>
+                <button id="O" class="key" onclick="addLetter('O')">O</button>
+                <button id="P" class="key" onclick="addLetter('P')">P</button>
+            </div>
+            <div class="line">
+                <button id="A" class="key" onclick="addLetter('A')">A</button>
+                <button id="S" class="key" onclick="addLetter('S')">S</button>
+                <button id="D" class="key" onclick="addLetter('D')">D</button>
+                <button id="F" class="key" onclick="addLetter('F')">F</button>
+                <button id="G" class="key" onclick="addLetter('G')">G</button>
+                <button id="H" class="key" onclick="addLetter('H')">H</button>
+                <button id="J" class="key" onclick="addLetter('J')">J</button>
+                <button id="K" class="key" onclick="addLetter('K')">K</button>
+                <button id="L" class="key" onclick="addLetter('L')">L</button>
+            </div>
+            <div class="line">
+                <button id="Z" class="key" onclick="addLetter('Z')">Z</button>
+                <button id="X" class="key" onclick="addLetter('X')">X</button>
+                <button id="C" class="key" onclick="addLetter('C')">C</button>
+                <button id="V" class="key" onclick="addLetter('V')">V</button>
+                <button id="B" class="key" onclick="addLetter('B')">B</button>
+                <button id="N" class="key" onclick="addLetter('N')">N</button>
+                <button id="M" class="key" onclick="addLetter('M')">M</button>
+            </div>
+        </div>
+        
+        
+       
+
+    </section>
+
+    <script src="./assets/js/script.js"></script>    
+</body>
+</html>
